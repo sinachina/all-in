@@ -245,12 +245,11 @@ def ckeditor():
             fn = time.strftime('%Y%m%d%H%M%S') + '_%d' % random.randint(0, 100) + '.png'
             creat_folder(os.path.join(app.config['UPLOADS_FOLDER'], current_user.uuid))
             pic_dir = os.path.join(app.config['UPLOADS_FOLDER'], current_user.uuid, fn)
-            print (pic_dir)
             pic = Image.open(pic_)
             pic.save(pic_dir)
 
-            folder = photosSet.url(current_user.uuid)
-            post.img = folder + '/' + fn
+            folder = 'uploads'+'/'+ current_user.uuid+'/'+fn
+            post.img = folder 
 
         post.uuid = current_user.uuid
         post.tittle = form.title.data
